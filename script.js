@@ -105,12 +105,17 @@
       .map((m) => `<span class="menu-tag">${escapeHTML(m)}</span>`)
       .join('');
 
+    const emoji = escapeHTML(cafe.emoji || '🍞');
+    const img = cafe.image
+      ? `<img class="card__img" src="${escapeHTML(cafe.image)}" alt="${escapeHTML(cafe.name)} 대표 빵" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'card__cover-emoji',textContent:'${emoji}'}))" />`
+      : `<span class="card__cover-emoji" aria-hidden="true">${emoji}</span>`;
+
     return `
       <article class="card">
         <div class="card__cover">
+          ${img}
           ${badge}
           ${rating}
-          <span aria-hidden="true">${escapeHTML(cafe.emoji || '🍞')}</span>
         </div>
         <div class="card__body">
           <h3 class="card__title">${escapeHTML(cafe.name)}</h3>
