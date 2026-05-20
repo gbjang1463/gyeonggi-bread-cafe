@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>경기도 빵카페 지도 · Gyeonggi Bread Cafe</title>
+  <meta name="description" content="경기도 31개 시·군의 빵카페를 한눈에. 지역·키워드로 검색하고 좋아하는 빵집을 찾아보세요." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__inner">
+      <p class="hero__tag">GYEONGGI · BREAD · CAFE</p>
+      <h1 class="hero__title">경기도 빵카페 한 바퀴</h1>
+      <p class="hero__subtitle">갓 구운 빵 냄새 따라, 경기도 31개 시·군의 빵카페를 모았습니다.</p>
+      <div class="hero__stats" id="heroStats"></div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="controls" aria-label="검색 및 필터">
+      <div class="search">
+        <span class="search__icon" aria-hidden="true">🔍</span>
+        <input
+          type="search"
+          id="searchInput"
+          placeholder="빵카페 이름, 메뉴, 동네로 검색"
+          autocomplete="off"
+        />
+      </div>
+
+      <div class="filters">
+        <div class="filter-group">
+          <label class="filter-label">지역</label>
+          <div class="chip-row" id="regionChips" role="tablist"></div>
+        </div>
+
+        <div class="filter-group">
+          <label class="filter-label">정렬</label>
+          <select id="sortSelect" class="select">
+            <option value="recommend">추천순</option>
+            <option value="name">이름순 (가나다)</option>
+            <option value="rating">평점 높은 순</option>
+            <option value="region">지역순</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <section class="result-meta">
+      <p id="resultCount" class="result-count"></p>
+      <button id="resetBtn" class="reset-btn" type="button">필터 초기화</button>
+    </section>
+
+    <section id="cafeGrid" class="grid" aria-live="polite"></section>
+
+    <section id="emptyState" class="empty" hidden>
+      <div class="empty__icon">🥖</div>
+      <h2>조건에 맞는 빵카페가 없어요</h2>
+      <p>다른 키워드나 지역을 선택해 보세요.</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 경기도 빵카페 지도 · 샘플 데이터로 구성된 사이트입니다. <code>data.js</code>를 수정해 우리 동네 빵집을 추가하세요.</p>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+steps:
+  - id: build
+    name: gcr.io/cloud-builders/docker
+    args:
+      - build
+      - -t
+      - us-central1-docker.pkg.dev/${PROJECT_ID}/cloud-run-source-deploy/gyeonggi-bread-cafe:$COMMIT_SHA
+      - .
+
+  - id: push
+    name: gcr.io/cloud-builders/docker
+    args:
+      - push
+      - us-central1-docker.pkg.dev/${PROJECT_ID}/cloud-run-source-deploy/gyeonggi-bread-cafe:$COMMIT_SHA
+
+  - id: deploy
+    name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    entrypoint: gcloud
+    args:
+      - run
+      - deploy
+      - gyeonggi-bread-cafe
+      - --image=us-central1-docker.pkg.dev/${PROJECT_ID}/cloud-run-source-deploy/gyeonggi-bread-cafe:$COMMIT_SHA
+      - --region=us-central1
+      - --platform=managed
+      - --allow-unauthenticated
+      - --port=8080
+
+images:
+  - us-central1-docker.pkg.dev/${PROJECT_ID}/cloud-run-source-deploy/gyeonggi-bread-cafe:$COMMIT_SHA
+
+options:
+  logging: CLOUD_LOGGING_ONLY

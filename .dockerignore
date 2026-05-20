@@ -1,0 +1,13 @@
+.git
+.gitignore
+.gcloudignore
+.dockerignore
+*.md
+*.bat
+cloudbuild.yaml
+Dockerfile
+nginx.conf.example
+.idea
+.vscode
+.DS_Store
+Thumbs.db
