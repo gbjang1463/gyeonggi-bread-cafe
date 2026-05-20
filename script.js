@@ -96,7 +96,7 @@
   }
 
   function cardHTML(cafe) {
-    const mapUrl = `https://map.kakao.com/?q=${encodeURIComponent(cafe.name + ' ' + cafe.address)}`;
+    const mapUrl = `https://map.kakao.com/?q=${encodeURIComponent(cafe.address)}`;
     const searchUrl = `https://search.naver.com/search.naver?query=${encodeURIComponent(cafe.name + ' ' + cafe.region)}`;
     const badge = cafe.badge ? `<span class="card__badge">${escapeHTML(cafe.badge)}</span>` : '';
     const rating = cafe.rating ? `<span class="card__rating">★ ${cafe.rating.toFixed(1)}</span>` : '';
